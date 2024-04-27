@@ -1,0 +1,18 @@
+name: Code Lint
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Code lint
+
+    steps:
+      - name: ⬇ Git checkout
+        uses: actions/checkout@v4
+
+      - name: 💾 Install modules
+        run: npm ci
+
+      - name: 🔍 ESLint validation
+        run: npx eslint --ignore-path .gitignore . --max-warnings 0
